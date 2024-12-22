@@ -171,3 +171,19 @@ main aside .social-media li a{
 main aside .social-media li a:hover{
     color: #2b2a2a;
 }
+
+/* Medium devices (768px dan dibawahnya) */
+@media screen and (max-width: 768px) {
+   header.navbar-container{
+    flex-direction: column;
+   }
+
+   header.navbar-container .nav-list ul{
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+   }
+
+   main.content{
+    flex-direction: column;
+   }
+}
