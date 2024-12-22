@@ -183,7 +183,22 @@ main aside .social-media li a:hover{
     column-gap: 0.5rem;
    }
 
-   main.content{
+   main .content{
     flex-direction: column;
+    gap: 2rem;
    }
+
+   main .content .content-description .content-title{
+    font-size: 3rem;
+   }
+
+   main .content .content-description p{
+    font-size: 1rem;
+   }
+
+   /* Mengubah content image yg harusnya dibawah menjadi di atas ketika di kecilkan */
+   main .content .content-image{
+    order: -1;
+   }
+
 }
