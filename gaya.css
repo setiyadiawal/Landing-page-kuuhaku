@@ -60,6 +60,31 @@ header.navbar-container .nav-list li:hover a{
     color: white;
 }
 
+header.navbar-container button {
+    padding: 0.4rem 1rem;
+    border: 3px solid transparent;
+    border-radius: 999px;
+    margin-block-start: 1rem;
+
+    background-color: #c21010;
+
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+}
+
+header.navbar-container button:hover {
+    border: 3px solid #c21010;
+    background-color: transparent;
+
+    color: #c21010;
+}
+
 main{
     flex: 1;
 
@@ -130,6 +155,16 @@ main .content .content-image img{
     max-width: 350px;
     margin: auto;
 }
+
+#menu {
+    text-align: center;
+    border: #2b2a2a 2px solid;
+}
+
+
+
+
+
 
 main aside{
     position: fixed;
