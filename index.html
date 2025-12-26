@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="utf-8" />
-    <title>Landing Page Kuuhaku</title>
-
-    <!-- Sambungin ke CSS -->
-    <link rel="stylesheet" href="gaya.css" />
-
-    <!-- Membuat Responsibilitas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Font dari google fonts -->
+    <title>Beranda - Kuuhaku Online Japanese Class</title>
+    <meta name="description" content="KOJAC - Platform pendidikan bahasa Jepang online terbaik untuk menghasilkan SDM unggul">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="gaya.css" />
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome (Untuk Logo Sosmed) -->
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer" />
-
 </head>
 
 <body>
     <header class="navbar-container">
         <div class="nav-logo">
-         <a href="#"><img src="assets/img/Logo kuuhaku.png" alt="Logo Kuuhaku" title="Logo Kuuhaku"></a>
+            <a href="index.html"><img src="assets/img/Logo kuuhaku.png" alt="Logo Kuuhaku" title="Logo Kuuhaku"></a>
         </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
         <nav class="nav-list">
             <ul>
-                <li><a href="index.html"> Beranda </a></li>
-                <li><a href="profil.html"> Profil</a></li>
-                <li><a href="#"> Tentang </a></li>
-                <li><a href="#"> Kontak </a></li>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
             </ul>
-        </nav>      
-        <a href="https://siswa.kojac.id/auth" target="_blank"><button>Halaman Siswa</button></a>      
+        </nav>
+        
+        <a href="https://siswa.kojac.id/auth" target="_blank"><button>Halaman Siswa</button></a>
     </header>
 
     <main>
@@ -57,28 +66,48 @@
                     KOJAC hadir sebagai platform pendidikan bahasa yang membantu menghasilkan sumber daya 
                     manusia yang unggul dalam Bahasa Asing, terutama Bahasa Jepang.
                 </p>
-                <a href="https://wa.me/6287716660025?text=Halo%20kak.%20Saya%20ingin%20tahu%20lebih%20detail%20mengenai%20kelas%20online%20di%20Kojac." target="_blank"><button>Lebih lanjut</button></a>
+                <a href="https://wa.me/6287716660025?text=Halo%20kak.%20Saya%20ingin%20tahu%20lebih%20detail%20mengenai%20kelas%20online%20di%20Kojac." target="_blank">
+                    <button>Lebih lanjut</button>
+                </a>
             </div>
             <div class="content-image">
-                <img src="assets/img/icon kuuhaku.jpg">
+                <img src="assets/img/icon kuuhaku.jpg" alt="Kuuhaku Icon">
             </div>
         </div>
 
         <aside>
-                    <div class="social-media">
-                        <ul>
-                            <li><a href="https://www.facebook.com/kojac.id" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/kojac.id/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="https://www.tiktok.com/@kojac.id" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-                            <li><a href="https://www.youtube.com/@Kojacid" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="https://whatsapp.com/channel/0029VbAtmuHDzgTDGFwU4N0R" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/kojac.id" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/kojac.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@kojac.id" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="https://www.youtube.com/@Kojacid" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://whatsapp.com/channel/0029VbAtmuHDzgTDGFwU4N0R" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
         </aside>
     </main>
 
     <footer>
-        
+        <p>&copy; 2024 Kuuhaku Online Japanese Class (KOJAC). All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navList = document.querySelector('.nav-list');
+            const hamburger = document.querySelector('.hamburger');
+            const isClickInside = navList.contains(event.target) || hamburger.contains(event.target);
+            
+            if (!isClickInside && navList.classList.contains('active')) {
+                navList.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

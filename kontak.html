@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak - Kuuhaku Online Japanese Class</title>
+    <meta name="description" content="Hubungi KOJAC - Kami siap membantu Anda memulai perjalanan belajar bahasa Jepang">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="gaya.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="navbar-container">
+    <div class="nav-logo">
+            <a href="index.html"><img src="assets/img/Logo kuuhaku.png" alt="Logo Kuuhaku" title="Logo Kuuhaku"></a>
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav class="nav-list">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="kontak.html" class="active">Kontak</a></li>
+            </ul>
+        </nav>
+        
+        <a href="https://siswa.kojac.id/auth" target="_blank"><button>Halaman Siswa</button></a>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Hubungi Kami</h1>
+                <p>Punya pertanyaan? Kami siap membantu Anda. Hubungi kami melalui berbagai channel di bawah ini atau isi form kontak.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Informasi Kontak</h2>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-item-content">
+                            <h3>Telepon / WhatsApp</h3>
+                            <p><a href="https://wa.me/6287716660025">+62 877-1666-0025</a></p>
+                            <p>Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 15.00 WIB</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-content">
+                            <h3>Email</h3>
+                            <p><a href="/cdn-cgi/l/email-protection#e881868e87a8838782898bc6818c"><span class="__cf_email__" data-cfemail="9cf5f2faf3dcf7f3f6fdffb2f5f8">[email&#160;protected]</span></a></p>
+                            <p>Kami akan merespon email Anda dalam 1x24 jam</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-content">
+                            <h3>Alamat</h3>
+                            <p>Kuuhaku Online Japanese Class (KOJAC)<br>
+                            Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-share-alt"></i>
+                        <div class="contact-item-content">
+                            <h3>Media Sosial</h3>
+                            <p>
+                                <a href="https://www.facebook.com/kojac.id" target="_blank">Facebook</a> | 
+                                <a href="https://www.instagram.com/kojac.id/" target="_blank">Instagram</a> | 
+                                <a href="https://www.tiktok.com/@kojac.id" target="_blank">TikTok</a> | 
+                                <a href="https://www.youtube.com/@Kojacid" target="_blank">YouTube</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Kirim Pesan</h2>
+                    <form action="https://wa.me/6287716660025" method="get" target="_blank">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap *</label>
+                            <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap Anda">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="nama@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+62 xxx-xxxx-xxxx">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" name="subject" placeholder="Topik yang ingin Anda tanyakan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Pesan *</label>
+                            <textarea id="message" name="text" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <aside>
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/kojac.id" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/kojac.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@kojac.id" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="https://www.youtube.com/@Kojacid" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://whatsapp.com/channel/0029VbAtmuHDzgTDGFwU4N0R" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kuuhaku Online Japanese Class (KOJAC). All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navList = document.querySelector('.nav-list');
+            const hamburger = document.querySelector('.hamburger');
+            const isClickInside = navList.contains(event.target) || hamburger.contains(event.target);
+            
+            if (!isClickInside && navList.classList.contains('active')) {
+                navList.classList.remove('active');
+            }
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Halo, saya ${name}%0A%0AEmail: ${email}%0ATelepon: ${phone}%0ASubjek: ${subject}%0A%0APesan:%0A${message}`;
+            
+            window.open(`https://wa.me/6287716660025?text=${whatsappMessage}`, '_blank');
+        });
+    </script>
+</body>
+</html>
