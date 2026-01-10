@@ -39,9 +39,11 @@
         
         <nav class="nav-list">
             <ul>
+           <ul>
                 <li><a href="index.html">Beranda</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                <li><a href="tentang.html" class="active">Tentang</a></li>
+                <li><a href="cari-siswa.html">Cari Siswa</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Tentang</a></li>
                 <li><a href="kontak.html">Kontak</a></li>
             </ul>
         </nav>
@@ -198,6 +200,16 @@
                 navList.classList.remove('active');
             }
         });
+
+                // Button pada Navbar aktif sesuai halaman
+        const navLinks = document.querySelectorAll('.nav-list a');
+        const currentUrl = window.location.pathname.split("/").pop();
+
+         navLinks.forEach(link => {
+             if(link.getAttribute("href") === currentUrl){
+                 link.classList.add("active");
+             }
+             });
     </script>
 </body>
 </html>

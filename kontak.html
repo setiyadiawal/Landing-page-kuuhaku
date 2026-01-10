@@ -38,11 +38,13 @@
         </div>
         
         <nav class="nav-list">
-            <ul>
+           <ul>
+                <ul>
                 <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari-siswa.html">Cari Siswa</a></li>
                 <li><a href="#">Profil</a></li>
                 <li><a href="#">Tentang</a></li>
-                <li><a href="kontak.html" class="active">Kontak</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
             </ul>
         </nav>
         
@@ -185,6 +187,16 @@
             
             window.open(`https://wa.me/6287716660025?text=${whatsappMessage}`, '_blank');
         });
+
+                // Button pada Navbar aktif sesuai halaman
+        const navLinks = document.querySelectorAll('.nav-list a');
+        const currentUrl = window.location.pathname.split("/").pop();
+
+         navLinks.forEach(link => {
+             if(link.getAttribute("href") === currentUrl){
+                 link.classList.add("active");
+             }
+             });
     </script>
 </body>
 </html>

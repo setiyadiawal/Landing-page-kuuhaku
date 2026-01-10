@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cari Data Siswa - Kuuhaku Online Japanese Class</title>
+    <meta name="description" content="KOJAC - Cari data siswa berdasarkan nama atau kode anggota">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- html2pdf.js for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- QRCode.js for QR code generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <style>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header.navbar-container{
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem 2rem;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    position: relative;
+}
+
+        header.navbar-container .nav-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        header.navbar-container .nav-list ul {
+            padding-left: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header.navbar-container .nav-list li {
+            list-style-type: none;
+        }
+
+        header.navbar-container .nav-list a {
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: black;
+            transition: all 0.2s ease-in-out;
+            display: block;
+        }
+
+        header.navbar-container .nav-list li a.active,
+        header.navbar-container .nav-list li:hover a {
+            background-color: #c21010;
+            color: white;
+        }
+
+        header.navbar-container > a button {
+            padding: 0.5rem 1.2rem;
+            border: 3px solid transparent;
+            border-radius: 999px;
+            background-color: #c21010;
+            font-family: 'Quicksand', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.15s ease-in;
+        }
+
+        header.navbar-container > a button:hover {
+            border: 3px solid #c21010;
+            background-color: transparent;
+            color: #c21010;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #c21010;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin-inline: auto;
+            padding: 2rem;
+        }
+
+        /* ===== SEARCH PAGE ===== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(194, 16, 16, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .page-header .icon-circle i {
+            font-size: 2rem;
+            color: #c21010;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .page-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* ===== SEARCH CARD ===== */
+        .search-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-card .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-card .card-header .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(194, 16, 16, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .search-card .card-header .icon-circle i {
+            font-size: 1.25rem;
+            color: #c21010;
+        }
+
+        .search-card .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .search-card .card-header p {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 0.5rem;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #c21010;
+            box-shadow: 0 0 0 3px rgba(194, 16, 16, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: #c21010;
+            color: white;
+            border: 3px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            border-color: #c21010;
+            color: #c21010;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #c21010;
+            border: 2px solid #c21010;
+        }
+
+        .btn-outline:hover {
+            background: #c21010;
+            color: white;
+        }
+
+        /* ===== RESULT SECTION ===== */
+        .result-section {
+            max-width: 600px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Error Card */
+        .error-card {
+            background: #fef2f2;
+            border: 1px solid rgba(194, 16, 16, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .error-card .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(194, 16, 16, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .error-card .icon-circle i {
+            font-size: 1.25rem;
+            color: #c21010;
+        }
+
+        .error-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c21010;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .error-card p {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Student Card */
+        .student-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .student-card .card-header-profile {
+            background: #c21010;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .student-card .card-header-profile .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .student-card .card-header-profile .avatar i {
+            font-size: 2rem;
+        }
+
+        .student-card .card-header-profile h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .student-card .card-header-profile p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .student-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .student-card .card-body h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row .label {
+            color: #666;
+        }
+
+        .info-row .value {
+            font-weight: 600;
+            color: #1a1a1a;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        .info-row .status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .info-row .status.aktif {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .info-row .status.tidak-aktif {
+            background: #fef9c3;
+            color: #a16207;
+        }
+
+        /* Certificate Link */
+        .info-row .value a {
+            color: #c21010;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-row .value a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== PRINT PDF BUTTON ===== */
+        .btn-pdf {
+            background: #1e3a5f;
+            color: white;
+            border: 3px solid transparent;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .btn-pdf:hover {
+            background: transparent;
+            border-color: #1e3a5f;
+            color: #1e3a5f;
+        }
+
+        /* ===== PDF PRINT AREA ===== */
+        .pdf-content {
+            padding: 2rem;
+            background: white;
+            position: relative;
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        /* Watermark Styles */
+        .pdf-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .pdf-watermark img {
+            width: 300px;
+            height: auto;
+        }
+
+        .pdf-watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 80px;
+            font-weight: 700;
+            color: #c21010;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 10px;
+        }
+
+        .pdf-header {
+            text-align: center;
+            border-bottom: 2px solid #c21010;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-header img {
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-header h1 {
+            font-size: 1.5rem;
+            color: #c21010;
+            margin: 0.5rem 0;
+        }
+
+        .pdf-header p {
+            color: #666;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .pdf-student-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-student-info h2 {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            margin: 0 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .pdf-info-row {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #e5e5e5;
+        }
+
+        .pdf-info-row .label {
+            width: 40%;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .pdf-info-row .value {
+            width: 60%;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .pdf-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 1rem;
+        }
+
+        /* ===== QR CODE SECTION ===== */
+        .pdf-qr-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f8f8f8;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pdf-qr-code {
+            flex-shrink: 0;
+        }
+
+        .pdf-qr-code canvas,
+        .pdf-qr-code img {
+            width: 80px !important;
+            height: 80px !important;
+        }
+
+        .pdf-qr-info {
+            flex: 1;
+        }
+
+        .pdf-qr-info h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .pdf-qr-info p {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .pdf-qr-info .doc-id {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #999;
+            word-break: break-all;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: rgba(194, 16, 16, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .info-box h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .info-box ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .info-box ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box ul li span {
+            color: #c21010;
+        }
+
+        /* ===== LOADING ===== */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+      /* ===== FOOTER ===== */
+footer {
+    background-color: #414040;
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 768px) {
+            header.navbar-container {
+                padding: 1rem;
+            }
+
+            header.navbar-container .nav-logo img {
+                width: 120px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header.navbar-container .nav-list {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            header.navbar-container .nav-list.active {
+                display: block;
+            }
+
+            header.navbar-container .nav-list ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            header.navbar-container > a {
+                display: none;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .search-card {
+                padding: 1.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .student-card .card-header-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .info-row .value {
+                text-align: left;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar-container">
+        <div class="nav-logo">
+            <a href="index.html"><img src="assets/img/Logo kuuhaku.png" alt="Logo Kuuhaku" title="Logo Kuuhaku"></a>
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav class="nav-list">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari-siswa.html">Cari Siswa</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Tentang</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+        
+        <a href="https://siswa.kojac.id/auth" target="_blank"><button>Halaman Siswa</button></a>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="icon-circle">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h1>Pencarian Data Siswa</h1>
+            <p>Temukan informasi lengkap siswa KOJAC dengan memasukkan nama atau kode anggota.</p>
+        </div>
+
+        <!-- Search Card -->
+        <div class="search-card">
+            <div class="card-header">
+                <div class="icon-circle">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div>
+                    <h2>Cari Data Siswa</h2>
+                    <p>Masukkan nama atau kode anggota untuk mencari</p>
+                </div>
+            </div>
+
+            <form id="searchForm" onsubmit="handleSearch(event)">
+                <div class="form-group">
+                    <label for="nama">Nama Siswa</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap siswa...">
+                </div>
+
+                <div class="form-group">
+                    <label for="kodeAnggota">Kode Anggota</label>
+                    <input type="text" id="kodeAnggota" name="kodeAnggota" placeholder="Contoh: KOJAC-001">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                        Cari Siswa
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="resetForm()" id="resetBtn" style="display: none;">
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-section" id="resultSection">
+            <!-- Error Card (hidden by default) -->
+            <div class="error-card" id="errorCard" style="display: none;">
+                <div class="icon-circle">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div>
+                    <h3>Data Tidak Ditemukan</h3>
+                    <p id="errorMessage">Data siswa yang Anda cari tidak tersedia dalam database.</p>
+                </div>
+            </div>
+
+            <!-- Student Card (hidden by default) -->
+            <div class="student-card" id="studentCard" style="display: none;">
+                <div class="card-header-profile">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 id="studentName">-</h3>
+                        <p>Kode: <span id="studentCode">-</span></p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4>Informasi Siswa</h4>
+                    <div id="studentInfo">
+                        <!-- Info rows will be inserted here -->
+                    </div>
+                    
+                    <!-- Print PDF Button -->
+                    <button type="button" class="btn btn-pdf no-print" onclick="printToPDF()" id="printBtn">
+                        <i class="fas fa-file-pdf"></i>
+                        Cetak PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hidden PDF Content for Export -->
+            <div id="pdfExportContent" style="display: none; position: absolute; left: -9999px;">
+                <div class="pdf-content">
+                    <!-- Watermark Background -->
+                    <div class="pdf-watermark">
+                        <img src="assets/img/Logo_kuuhaku.png" alt="Watermark" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div class="pdf-watermark-text">KOJAC</div>
+                    
+                    <div class="pdf-header" style="position: relative; z-index: 1;">
+                        <img src="assets/img/Logo_kuuhaku.png" alt="Logo Kuuhaku" onerror="this.style.display='none'">
+                        <h1>Data Siswa KOJAC</h1>
+                        <p>Kuuhaku Online Japanese Class</p>
+                    </div>
+                    <div class="pdf-student-info" style="position: relative; z-index: 1;">
+                        <h2 id="pdfStudentName">-</h2>
+                        <div id="pdfStudentInfo">
+                            <!-- PDF info rows will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- QR Code Verification Section -->
+                    <div class="pdf-qr-section" style="position: relative; z-index: 1;">
+                        <div class="pdf-qr-code" id="pdfQrCode"></div>
+                        <div class="pdf-qr-info">
+                            <h4><i class="fas fa-shield-alt"></i> Verifikasi Keaslian Dokumen</h4>
+                            <p>Scan QR code untuk memverifikasi keaslian dokumen ini</p>
+                            <p class="doc-id">ID: <span id="pdfDocId">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="pdf-footer" style="position: relative; z-index: 1;">
+                        <p>Dokumen ini digenerate otomatis oleh sistem KOJAC pada <span id="pdfDate"></span></p>
+                        <p>&copy; 2024 Kuuhaku Online Japanese Class. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>📌 Petunjuk Pencarian</h3>
+            <ul>
+                <li><span>•</span> Masukkan nama lengkap siswa atau kode anggota</li>
+                <li><span>•</span> Kode anggota biasanya berformat KOJAC-XXX</li>
+                <li><span>•</span> Anda dapat mencari menggunakan salah satu atau kedua kriteria</li>
+                <li><span>•</span> Pastikan data yang dimasukkan sesuai dengan yang terdaftar</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kuuhaku Online Japanese Class (KOJAC). All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // URL APPS SCRIPT - SUDAH DIKONFIGURASI
+        // ============================================
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOayHBctvm2_6P9EVFpNcd43MnYbmFsmIkHkHQJaXA-D0IaEuqKxGHFkvNCVIiclHTUg/exec';
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+
+                // Button pada Navbar aktif sesuai halaman
+        const navLinks = document.querySelectorAll('.nav-list a');
+        const currentUrl = window.location.pathname.split("/").pop();
+
+         navLinks.forEach(link => {
+             if(link.getAttribute("href") === currentUrl){
+                 link.classList.add("active");
+             }
+             });
+
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navList = document.querySelector('.nav-list');
+            const hamburger = document.querySelector('.hamburger');
+            const isClickInside = navList.contains(event.target) || hamburger.contains(event.target);
+            
+            if (!isClickInside && navList.classList.contains('active')) {
+                navList.classList.remove('active');
+            }
+        });
+
+        async function handleSearch(event) {
+            event.preventDefault();
+            
+            const nama = document.getElementById('nama').value.trim();
+            const kodeAnggota = document.getElementById('kodeAnggota').value.trim();
+            
+            // VALIDASI: Kedua field wajib diisi
+            if (!nama || !kodeAnggota) {
+                showError('Nama dan Kode Anggota wajib diisi untuk verifikasi data.');
+                return;
+            }
+
+            // Show loading state
+            const searchBtn = document.getElementById('searchBtn');
+            const originalBtnText = searchBtn.innerHTML;
+            searchBtn.innerHTML = '<span class="loading-spinner"></span> Mencari...';
+            searchBtn.disabled = true;
+
+            try {
+                // Build URL with parameters
+                const url = new URL(APPS_SCRIPT_URL);
+                url.searchParams.append('nama', nama);
+                url.searchParams.append('kode', kodeAnggota);
+
+                const response = await fetch(url.toString(), {
+                    method: 'GET',
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.student) {
+                    // Simpan data ke sessionStorage dan redirect ke halaman profil
+                    sessionStorage.setItem('studentData', JSON.stringify(data.student));
+                    window.location.href = `profil-siswa.html?kode=${encodeURIComponent(kodeAnggota)}&nama=${encodeURIComponent(nama)}`;
+                } else {
+                    showError(data.message || 'Data siswa tidak ditemukan dalam database.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Terjadi kesalahan saat mencari data. Silakan coba lagi atau hubungi administrator.');
+            } finally {
+                // Restore button
+                searchBtn.innerHTML = originalBtnText;
+                searchBtn.disabled = false;
+                document.getElementById('resetBtn').style.display = 'block';
+            }
+        }
+
+        function showError(message) {
+            const resultSection = document.getElementById('resultSection');
+            const errorCard = document.getElementById('errorCard');
+            const studentCard = document.getElementById('studentCard');
+            const errorMessage = document.getElementById('errorMessage');
+
+            errorMessage.textContent = message;
+            errorCard.style.display = 'flex';
+            studentCard.style.display = 'none';
+            resultSection.classList.add('show');
+        }
+
+        function showStudent(student) {
+            // Store for PDF export
+            currentStudentData = student;
+            
+            const resultSection = document.getElementById('resultSection');
+            const errorCard = document.getElementById('errorCard');
+            const studentCard = document.getElementById('studentCard');
+            const studentName = document.getElementById('studentName');
+            const studentCode = document.getElementById('studentCode');
+            const studentInfo = document.getElementById('studentInfo');
+
+            // Set header info - using new field names from spreadsheet
+            studentName.textContent = student.Nama_Lengkap || '-';
+            studentCode.textContent = student.Kode_Anggota || '-';
+
+            // Build info rows with all spreadsheet fields
+            let infoHTML = '';
+
+            if (student.Nama_Panggilan) {
+                infoHTML += createInfoRow('Nama Panggilan', student.Nama_Panggilan);
+            }
+            if (student.Jenis_Kelamin) {
+                infoHTML += createInfoRow('Jenis Kelamin', student.Jenis_Kelamin);
+            }
+            if (student.Umur) {
+                infoHTML += createInfoRow('Umur', student.Umur + ' tahun');
+            }
+            if (student.Domisili) {
+                infoHTML += createInfoRow('Domisili', student.Domisili);
+            }
+            if (student.No_wa) {
+                infoHTML += createInfoRow('No. WhatsApp', student.No_wa);
+            }
+            if (student.Tanggal_Bergabung) {
+                infoHTML += createInfoRow('Tanggal Bergabung', student.Tanggal_Bergabung);
+            }
+            if (student.Jenis_kelas) {
+                infoHTML += createInfoRow('Jenis Kelas', student.Jenis_kelas);
+            }
+            if (student.Nama_kelas) {
+                infoHTML += createInfoRow('Nama Kelas', student.Nama_kelas);
+            }
+            if (student.Pengajar) {
+                infoHTML += createInfoRow('Pengajar', student.Pengajar);
+            }
+            if (student.Periode) {
+                infoHTML += createInfoRow('Periode', student.Periode);
+            }
+            if (student.Kode_Sertifikat) {
+                infoHTML += createInfoRow('Kode Sertifikat', student.Kode_Sertifikat);
+            }
+            if (student.Link_Sertifikat) {
+                infoHTML += `
+                    <div class="info-row">
+                        <span class="label">Sertifikat</span>
+                        <span class="value"><a href="${student.Link_Sertifikat}" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat</a></span>
+                    </div>
+                `;
+            }
+            if (student.Status) {
+                const statusLower = student.Status.toLowerCase();
+                const statusClass = statusLower === 'aktif' ? 'aktif' : 'tidak-aktif';
+                infoHTML += `
+                    <div class="info-row">
+                        <span class="label">Status</span>
+                        <span class="status ${statusClass}">${student.Status}</span>
+                    </div>
+                `;
+            }
+            if (student.Catatan) {
+                infoHTML += createInfoRow('Catatan', student.Catatan);
+            }
+
+            studentInfo.innerHTML = infoHTML;
+            errorCard.style.display = 'none';
+            studentCard.style.display = 'block';
+            resultSection.classList.add('show');
+        }
+
+        function createInfoRow(label, value) {
+            return `
+                <div class="info-row">
+                    <span class="label">${label}</span>
+                    <span class="value">${value}</span>
+                </div>
+            `;
+        }
+
+        function resetForm() {
+            document.getElementById('nama').value = '';
+            document.getElementById('kodeAnggota').value = '';
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('errorCard').style.display = 'none';
+            document.getElementById('studentCard').style.display = 'none';
+            document.getElementById('resetBtn').style.display = 'none';
+        }
+
+        // Store current student data for PDF
+        let currentStudentData = null;
+
+        function printToPDF() {
+            if (!currentStudentData) {
+                alert('Tidak ada data siswa untuk dicetak.');
+                return;
+            }
+
+            const student = currentStudentData;
+            const pdfContent = document.getElementById('pdfExportContent');
+            
+            // Generate unique document ID
+            const timestamp = Date.now();
+            const randomStr = Math.random().toString(36).substring(2, 8).toUpperCase();
+            const docId = `KOJAC-${student.Kode_Anggota || 'DOC'}-${timestamp}-${randomStr}`;
+            
+            // Create verification URL
+            const baseUrl = window.location.origin + window.location.pathname.replace(/[^\/]*$/, '');
+            const verificationUrl = `${baseUrl}verify.html?id=${encodeURIComponent(docId)}&code=${encodeURIComponent(student.Kode_Anggota || '')}&name=${encodeURIComponent(student.Nama_Lengkap || '')}`;
+            
+            // Set student name
+            document.getElementById('pdfStudentName').textContent = student.Nama_Lengkap || '-';
+            
+            // Set document ID
+            document.getElementById('pdfDocId').textContent = docId;
+            
+            // Build PDF info rows with all fields
+            let pdfInfoHTML = '';
+            pdfInfoHTML += createPdfInfoRow('Kode Anggota', student.Kode_Anggota || '-');
+            if (student.Nama_Panggilan) pdfInfoHTML += createPdfInfoRow('Nama Panggilan', student.Nama_Panggilan);
+            if (student.Jenis_Kelamin) pdfInfoHTML += createPdfInfoRow('Jenis Kelamin', student.Jenis_Kelamin);
+            if (student.Umur) pdfInfoHTML += createPdfInfoRow('Umur', student.Umur + ' tahun');
+            if (student.Domisili) pdfInfoHTML += createPdfInfoRow('Domisili', student.Domisili);
+            if (student.No_wa) pdfInfoHTML += createPdfInfoRow('No. WhatsApp', student.No_wa);
+            if (student.Tanggal_Bergabung) pdfInfoHTML += createPdfInfoRow('Tanggal Bergabung', student.Tanggal_Bergabung);
+            if (student.Jenis_kelas) pdfInfoHTML += createPdfInfoRow('Jenis Kelas', student.Jenis_kelas);
+            if (student.Nama_kelas) pdfInfoHTML += createPdfInfoRow('Nama Kelas', student.Nama_kelas);
+            if (student.Pengajar) pdfInfoHTML += createPdfInfoRow('Pengajar', student.Pengajar);
+            if (student.Periode) pdfInfoHTML += createPdfInfoRow('Periode', student.Periode);
+            if (student.Kode_Sertifikat) pdfInfoHTML += createPdfInfoRow('Kode Sertifikat', student.Kode_Sertifikat);
+            if (student.Status) pdfInfoHTML += createPdfInfoRow('Status', student.Status);
+            if (student.Catatan) pdfInfoHTML += createPdfInfoRow('Catatan', student.Catatan);
+            
+            document.getElementById('pdfStudentInfo').innerHTML = pdfInfoHTML;
+            
+            // Set current date
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('pdfDate').textContent = dateStr;
+            
+            // Generate QR Code
+            const qrContainer = document.getElementById('pdfQrCode');
+            qrContainer.innerHTML = ''; // Clear previous QR code
+            
+            new QRCode(qrContainer, {
+                text: verificationUrl,
+                width: 80,
+                height: 80,
+                colorDark: '#1a1a1a',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+            
+            // Wait for QR code to generate before creating PDF
+            setTimeout(() => {
+                // Show content temporarily for PDF generation
+                pdfContent.style.display = 'block';
+                pdfContent.style.position = 'static';
+                pdfContent.style.left = 'auto';
+                
+                // Configure PDF options
+                const opt = {
+                    margin: 10,
+                    filename: `Data_Siswa_${student.Kode_Anggota || student.Nama_Lengkap || 'KOJAC'}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                
+                // Generate PDF
+                html2pdf().set(opt).from(pdfContent.querySelector('.pdf-content')).save().then(() => {
+                    // Hide content after PDF is generated
+                    pdfContent.style.display = 'none';
+                    pdfContent.style.position = 'absolute';
+                    pdfContent.style.left = '-9999px';
+                });
+            }, 100);
+        }
+
+        function createPdfInfoRow(label, value) {
+            return `
+                <div class="pdf-info-row">
+                    <span class="label">${label}</span>
+                    <span class="value">${value}</span>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
