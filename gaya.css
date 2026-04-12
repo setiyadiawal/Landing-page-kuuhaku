@@ -153,7 +153,6 @@ main .content .content-description button {
 main .content .content-description button:hover {
     border: 3px solid #c21010;
     background-color: transparent;
-
     color: #c21010;
 }
 
@@ -469,6 +468,337 @@ footer p {
     font-size: 1rem;
 }
 
+
+
+
+/* ===== UPDATE ===== */
+/* ===== KELAS ===== */
+.kelas-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0 1rem;
+    margin-bottom: 2rem;
+    color: #2b2a2a;
+}
+
+.kelas-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+}
+
+.kelas-grid-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+}
+
+.kelas-card ul {
+    margin-top: 1rem;
+}
+
+/* Hover biar lebih hidup */
+.kelas-card {
+    transition: all 0.3s ease;
+      position: relative;
+          opacity: 0.85;
+          height: fit-content;
+}
+.kelas-card:hover {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+}
+
+
+
+
+.kelas-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kelas-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+/* ===== CTA BUTTON ===== */
+.btn-daftar {
+    margin-top: 1.2rem;
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 999px;
+    border: none;
+
+    background: #c21010;
+    color: white;
+
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+/* Hover lebih hidup */
+.btn-daftar:hover {
+     border: 3px solid #c21010;
+    background-color: transparent;
+    color: #c21010;
+     transform: scale(1.05);
+}
+
+/* Active click feel */
+.btn-daftar:active {
+    transform: scale(0.97);
+}
+.btn-utama {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    border: none;
+
+    background: #c21010;
+    color: white;
+
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-utama:hover {
+      border: 3px solid #c21010;
+    background-color: transparent;
+    color: #c21010;
+    transform: scale(1.05);
+}
+.urgency {
+    text-align: center;
+    color: #c21010;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+.kelas-value {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+.closing {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Highlight card */
+.kelas-card.highlight {
+    border: 2px solid #c21010;
+    transform: scale(1.03);
+        opacity: 1;
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+/* ===== BADGE BASE ===== */
+.badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+
+    background: #c21010;
+    color: white;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Variasi badge */
+.badge.alt {
+    background: #1a1a1a;
+}
+
+.badge.alt2 {
+    background: #2563eb;
+}
+
+.badge.alt3 {
+    background: #16a34a;
+}
+
+.badge.alt4 {
+    background: #9333ea;
+}
+
+/* Deskripsi */
+.kelas-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Mini trust */
+.kelas-mini {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* ===== PRICING ===== */
+.harga {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.harga-lama {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+      color: #c21010;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.harga-baru {
+    color: #c21010;
+    font-size: 1.3rem;
+    font-weight: 700;
+      color: #c21010;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* Slot urgency */
+.slot {
+    font-size: 0.85rem;
+    color: #c21010;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+.list-title {
+    font-weight: 700;
+    margin-top: 1rem;
+    color: #c21010;
+    font-size: 0.95rem;
+}
+.cicilan {
+    font-size: 1rem;
+    color: #16a34a;
+    margin-bottom: 0.5rem;
+}
+/* Read more */
+.benefit .more {
+    display: none;
+}
+
+.benefit.active .more {
+    display: block;
+}
+
+.btn-read {
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+    color: #c21010;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-read:hover {
+    text-decoration: underline;
+}
+/* ===== ACCORDION ===== */
+.accordion {
+    margin-top: 1rem;
+}
+
+.acc-item {
+    border-bottom: 1px solid #eee;
+}
+
+.acc-header {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+
+    padding: 1rem 0; /* dari 0.8 → lebih besar */
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    cursor: pointer;
+    color: #333;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Icon + */
+.acc-header::after {
+    content: "+";
+    font-size: 1.2rem;
+    color: #c21010;
+    
+}
+
+/* Active icon */
+.acc-item.active .acc-header::after {
+    content: "-";
+}
+
+.acc-header:active {
+    background: rgba(194,16,16,0.05);
+}
+.acc-item.active .acc-header {
+    color: #c21010;
+    font-weight: 700;
+}
+/* Content */
+.acc-content {
+height: 0;
+    overflow: hidden;
+    display: block;
+     will-change: height;
+    height: 0;
+    opacity: 0;
+    transition: height 0.35s ease, opacity 0.25s ease;
+}
+.acc-item.active .acc-content {
+    opacity: 1;
+}
+
+.acc-content ul {
+    padding: 0.5rem 0 0.8rem 1.2rem;
+}
+
+
+/* Program selalu terbuka */
+.acc-item.always-open .acc-content {
+    height: auto !important;
+    opacity: 1 !important;
+}
+
+/* Hilangkan tanda + */
+.acc-item.always-open .acc-header::after {
+    content: "";
+}
+/* ===== UPDATE DONE ===== */
+
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 /* Large Desktop (1920px+) */
@@ -602,6 +932,21 @@ footer p {
     
     main aside {
         display: none;
+    }
+
+     .acc-header {
+        padding: 1.2rem 0;
+        font-size: 1.05rem;
+    }
+
+    .acc-content ul li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .kelas-card {
+        padding: 1.5rem;
     }
 }
 

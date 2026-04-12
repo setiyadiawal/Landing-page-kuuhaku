@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelas - Kuuhaku Online Japanese Class</title>
+
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="gaya.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+
+<body>
+
+<!-- HEADER (SAMA PERSIS) -->
+<header class="navbar-container">
+    <div class="nav-logo">
+        <a href="index.html"><img src="assets/img/Logo kuuhaku.png"></a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+        <nav class="nav-list">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari-siswa.html">Cari Siswa</a></li>
+                <li><a href="kelas.html">Kelas</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Tentang</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+
+    <a href="https://siswa.kojac.id/auth" target="_blank">
+        <button>Halaman Siswa</button>
+    </a>
+</header>
+
+<!-- MAIN -->
+<main>
+    
+    <div class="profile-container">
+
+        <!-- HEADER -->
+        <div class="profile-header">
+    <h1>Mau Lulus JLPT atau Kerja ke Jepang Tapi Tidak Tahu Mulai dari Mana?</h1>
+    <p>Belajar dari nol hingga siap ujian & kerja di Jepang dengan Program belajar terstruktur dan Bimbingan intensif dari pengajar berpengalaman.    
+    </p>
+
+    <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20ingin%20konsultasi%20kelas%20KOJAC" target="_blank">
+        <button class="btn-utama">Konsultasi Gratis</button>
+    </a>
+    <p class="urgency">⚠️ Batch terbatas • Pendaftaran ditutup jika kuota penuh</p>
+    <p style="text-align:center; font-size:0.9rem; color:#666;">
+    👉 Rekomendasi: mulai dari <strong>Kelas Semi Privat</strong> jika kamu masih bingung memilih
+</p>
+        </div>
+
+
+        
+
+<!-- <div class="about-section">
+    <h2>Apakah kamu mengalami ini?</h2>
+    <ul>
+        <li>❌ Sudah belajar tapi masih tidak bisa ngomong</li>
+        <li>❌ Bingung mulai dari nol (hiragana, kanji, dll)</li>
+        <li>❌ Takut gagal JLPT / SSW</li>
+        <li>❌ Tidak percaya diri saat interview Jepang</li>
+    </ul>
+</div>
+<div class="about-section">
+    <h2>KOJAC bantu kamu sampai berhasil</h2>
+    <ul>
+        <li>✔ Kurikulum terstruktur dari nol</li>
+        <li>✔ Fokus hasil: lulus JLPT & kerja Jepang</li>
+        <li>✔ Dibimbing langsung oleh pengajar</li>
+        <li>✔ Belajar lebih cepat & terarah</li>
+    </ul>
+</div>
+<div style="text-align:center; margin-top:2rem;">
+    <a href="kelas.html">
+        <button>Lihat Program Kelas</button>
+    </a>
+</div> -->
+
+
+
+        <!-- JLPT -->
+         
+        <h2 class="kelas-title">Kelas Bahasa Jepang</h2>
+
+        <div class="kelas-grid-2">
+
+            <div class="profile-card kelas-card highlight">
+
+          <div class="badge">🔥 Paling Diminati</div>
+
+             <h3>Kelas Semi Privat <br>JLPT N4 / JFT Basic A2</br></h3>
+              <p class="kelas-desc">Pilihan terbaik untuk kamu yang ingin cepat bisa & tetap hemat biaya</p>
+                <!-- dari sini -->
+                <div class="accordion">
+
+                <!-- PROGRAM -->
+                <div class="acc-item active always-open">
+                    <button class="acc-header">📚 Program</button>
+                    <div class="acc-content">
+                    <ul>
+                        <li>Kelas dari 0 sampai JLPT N4/JFT Basic A2</li>
+                        <li><strong>Max 5 siswa</strong> → belajar lebih fokus & interaktif</li>
+                        <li>12x pertemuan/bulan</li>
+                        <li>±120 menit/pertemuan</li>
+                        <li>Tugas intensif hampir setiap hari</li>
+                        <li>Dipandu langsung oleh pengajar</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <!-- BONUS -->
+                <div class="acc-item">
+                    <button class="acc-header">🎁 Bonus</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Free Kelas Hiragana & Katakana (±3 - 4 Minggu)</li>
+                                        <li>Free Kelas Pemantapan Ujian JFT / JLPT (± 1bulan)</li>
+                                        <li>Free Akses Web Aplikasi Belajar Kojac</li>
+                                        <li>Free Buku Fisik Original (Fisik / Cetak bukan Soft file)</li>
+                                        <li>Free Modul Belajar (SoftFile)</li>
+                                        <li>Free Rekaman Kelas</li>
+                                        <li>Free kumpulan soal latihan</li>
+                                        <li>Kartu Member KOJAC</li>
+                                        <li>Sertifikat Pelatihan setelah selesai Program</li>
+                                        <li>Hadiah cenderamata bagi yg telah menuntaskan kelas</li>
+                                        </ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="acc-item">
+                    <button class="acc-header">🚀 Support</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Konsultasi 6x24 jam</li>
+                            <li>Grup Premium khusus Siswa</li>
+                            <li>Grup Premium khusus Alumni</li>
+                            <li>Bimbingan ujian JLPT/JFT</li>
+                            <li>Sertifikat pelatihan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+                <!-- sampai sini -->
+
+<p class="kelas-mini">✔ Sudah digunakan oleh banyak siswa KOJAC</p>
+<div class="harga">
+    <span class="harga-lama">Rp 3.325.000</span>
+    <span class="harga-baru">Rp 1.825.000</span>
+</div>
+
+<p class="cicilan">💡 Bisa dicicil <strong>Rp 365.000/bulan</strong></p>
+
+    <p class="slot">⚠️ Hampir penuh minggu ini</p>
+    <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20ingin%20daftar%20Kelas%20Semi%20Privat%20JLPT%20N4" target="_blank">
+        <button class="btn-daftar">🔥 Amankan Slot Sekarang</button>
+    </a>
+
+</div>
+
+            <div class="profile-card kelas-card ">
+                
+                <h3>Kelas Privat</h3>
+                <div class="badge alt">⭐ Premium</div>
+                <p class="kelas-desc">Cocok untuk kamu yang ingin hasil cepat dengan bimbingan penuh</p>
+                 <div class="accordion">
+
+                <!-- PROGRAM -->
+                <div class="acc-item active always-open">
+                    <button class="acc-header">📚 Program</button>
+                    <div class="acc-content">
+                    <ul>
+                    <li>Kelas <strong>1 on 1</strong> dengan Pengajar</li>
+                    <li>±120 menit/sesi</li>
+                    <li>Jadwal kelas fleksibel</li>
+                    <li>Waktu belajar bebas, sesuai kesepakatan dengan Pengajar</li>
+                    <li>Materi disesuaikan dengan kebutuhan & tujuan siswa</li>
+                    <li>Metode pembelajaran interaktif</li>
+                    <li>Pendampingan intensif untuk hasil maksimal</li>
+                    <li>Tugas diluar pertemuan</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <!-- BONUS -->
+                <div class="acc-item">
+                    <button class="acc-header">🎁 Bonus</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Free Akses Web Aplikasi Belajar Kojac</li>
+                            <li>Free Buku Fisik Original (Fisik / Cetak bukan Soft file)</li>
+                            <li>Free Modul Belajar (SoftFile)</li>
+                            <li>Free Rekaman Kelas</li>
+                            <li>Free kumpulan soal latihan</li>
+                            <li>Kartu Member KOJAC</li>
+                            <li>Sertifikat Pelatihan setelah selesai Program</li>
+                            <li>Hadiah cenderamata bagi yg telah menuntaskan kelas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="acc-item">
+                    <button class="acc-header">🚀 Support</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Konsultasi 6x24 jam</li>
+                            <li>Grup Premium khusus Siswa</li>
+                            <li>Grup Premium khusus Alumni</li>
+                            <li>Bimbingan ujian JLPT/JFT</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+        <div class="harga">
+            <span class="harga-lama">Rp 70.000/Jam</span>
+            <span class="harga-baru">Rp 52.500/Jam</span>
+        </div>
+
+        <p class="cicilan">💡 Pembayaran <strong>Fleksibel</strong> (Diawal atau Akhir Belajar)</p>
+
+                <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20tertarik%20Kelas%20Privat%20JLPT%20N4" target="_blank">
+    <button class="btn-daftar">Ambil Kelas Privat</button>
+</a>
+            </div>
+
+        </div>
+
+        <!-- SSW -->
+        <h2 class="kelas-title">Kelas SSW</h2>
+
+        <div class="kelas-grid-1">
+            <div class="profile-card kelas-card">
+                <div class="badge alt2">🇯🇵 Kerja Jepang</div>
+                <h3>Perawat Lansia (Kaigo)</h3>
+                <p class="kelas-desc">Program khusus untuk kamu yang ingin kerja di Jepang di bidang perawatan lansia</p>
+                
+                <div class="accordion">
+
+                <!-- PROGRAM -->
+                <div class="acc-item active always-open">
+                    <button class="acc-header">📚 Program</button>
+                    <div class="acc-content">
+                    <ul>
+                        <li>Bahasa Jepang khusus Perawat Lansia / Kaigo</li>
+                        <li><strong>Maks 3 Siswa</strong> → belajar lebih Fokus & Kondusif</li>
+                        <li>10x pertemuan/bulan</li>
+                        <li>±120 menit/pertemuan</li>
+                        <li>Tugas diluar pertemuan</li>
+                        <li>Dipandu langsung oleh pengajar eks Perawat Lansia</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <!-- BONUS -->
+                <div class="acc-item">
+                    <button class="acc-header">🎁 Bonus</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Free Akses Web Aplikasi Belajar Kojac</li>
+                            <li>Free Modul Belajar (SoftFile)</li>
+                            <li>Free Rekaman Kelas</li>
+                            <li>Free Kumpulan soal latihan</li>
+                            <li>Free Kisi-kisi soal ujian</li>
+                            <li>Kartu Member KOJAC</li>
+                            <li>Sertifikat Pelatihan setelah selesai Program</li>
+                            <li>Hadiah cenderamata bagi yg telah menuntaskan kelas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="acc-item">
+                    <button class="acc-header">🚀 Support</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Konsultasi 6x24 jam</li>
+                            <li>Grup Premium khusus Siswa</li>
+                            <li>Grup Premium khusus Alumni</li>
+                            <li>Bimbingan mengerjakan ujian SSW</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+                <!-- sampai sini -->
+
+<p class="kelas-mini">✔ Sudah digunakan oleh banyak siswa KOJAC</p>
+<div class="harga">
+    <span class="harga-lama">Rp 1.500.000</span>
+    <span class="harga-baru">Rp 600.000</span>
+</div>
+
+<p class="slot">⚠️ Kuota terbatas per bulan</p>
+            <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20ingin%20ikut%20Kelas%20SSW%20Kaigo" target="_blank">
+    <button class="btn-daftar">Mulai Karir ke Jepang</button>
+</a></div>
+            
+        </div>
+
+        <!-- KAIWA -->
+        <h2 class="kelas-title">Percakapan & Wawancara</h2>
+
+        <div class="kelas-grid-2">
+
+            <div class="profile-card kelas-card ">
+                <div class="badge alt3">🗣 Speaking</div>
+                <h3>Kelas Kaiwa</h3>
+                <p class="kelas-desc">Latihan bicara agar tidak kaku saat ngobrol dengan orang Jepang</p>
+                <div class="accordion">
+
+                <!-- PROGRAM -->
+                <div class="acc-item active always-open">
+                    <button class="acc-header">📚 Program</button>
+                    <div class="acc-content">
+                    <ul>
+                        <li>Percakapan sehari-hari</li>
+                        <li>Latihan percakapan aktif</li>
+                        <li>Roleplay situasi nyata</li>
+                        <li><strong>Maks 2 Siswa / Kelas</strong></li>
+                        <li>8x pertemuan/bulan</li>
+                        <li>±90 menit/pertemuan</li>
+                        <li>Tugas diluar pertemuan</li>
+                        <li>Dipandu langsung oleh pengajar eks Jepang</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <!-- BONUS -->
+                <div class="acc-item">
+                    <button class="acc-header">🎁 Bonus</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Free Akses Web Aplikasi Belajar Kojac</li>
+                            <li>Free Modul Belajar (SoftFile)</li>
+                            <li>Free Rekaman Kelas</li>
+                            <li>Free Kumpulan soal latihan</li>
+                            <li>Kartu Member KOJAC</li>
+                            <li>Hadiah cenderamata bagi yg telah menuntaskan kelas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="acc-item">
+                    <button class="acc-header">🚀 Support</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Konsultasi 6x24 jam</li>
+                            <li>Grup Premium khusus Siswa</li>
+                            <li>Grup Premium khusus Alumni</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="harga">
+    <span class="harga-lama">Rp 1.750.000</span>
+    <span class="harga-baru">Rp 800.000</span>
+</div>
+
+<p class="slot">⚠️ Kuota terbatas per batch</p>
+                <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20ingin%20ikut%20Kelas%20Kaiwa" target="_blank">
+    <button class="btn-daftar">Latihan Speaking</button>
+</a>
+            </div>
+
+            <div class="profile-card kelas-card ">
+                <div class="badge alt4">💼 Interview</div>
+                <h3>Kelas Mensetsu</h3>
+                <p class="kelas-desc">Persiapan serius agar lolos interview kerja Jepang</p>
+                <div class="accordion">
+
+                <!-- PROGRAM -->
+                <div class="acc-item active always-open">
+                    <button class="acc-header">📚 Program</button>
+                    <div class="acc-content">
+                    <ul>
+                        <li>Simulasi wawancara Jepang</li>
+                        <li>Latihan Q&A HR</li>
+                        <li>Tips lolos interview</li>
+                        <li><strong>Maks 2 Siswa / Kelas</strong></li>
+                        <li>8x pertemuan/bulan</li>
+                        <li>±90 menit/pertemuan</li>
+                        <li>Tugas diluar pertemuan</li>
+                        <li>Dipandu langsung oleh pengajar eks Jepang</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <!-- BONUS -->
+                <div class="acc-item">
+                    <button class="acc-header">🎁 Bonus</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Free Akses Web Aplikasi Belajar Kojac</li>
+                            <li>Free Modul Belajar (SoftFile)</li>
+                            <li>Free Rekaman Kelas</li>
+                            <li>Free Kumpulan soal latihan</li>
+                            <li>Kartu Member KOJAC</li>
+                            <li>Hadiah cenderamata bagi yg telah menuntaskan kelas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="acc-item">
+                    <button class="acc-header">🚀 Support</button>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Konsultasi 6x24 jam</li>
+                            <li>Grup Premium khusus Siswa</li>
+                            <li>Grup Premium khusus Alumni</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+                <div class="harga">
+    <span class="harga-lama">Rp 1.750.000</span>
+    <span class="harga-baru">Rp 800.000</span>
+</div>
+
+<p class="slot">⚠️ Batch segera ditutup</p>
+                <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20ingin%20ikut%20Kelas%20Wawancara%20Jepang" target="_blank">
+    <button class="btn-daftar">Siap Interview</button>
+</a>
+            </div>
+
+        </div>
+
+    </div>
+    
+
+            <aside>
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/kojac.id" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/kojac.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@kojac.id" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="https://www.youtube.com/@Kojacid" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://whatsapp.com/channel/0029VbAtmuHDzgTDGFwU4N0R" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </aside>
+        
+</main>
+<div class="closing">
+    <h2>Jangan sampai ketinggalan batch ini</h2>
+    <p>Slot terbatas dan cepat penuh setiap bulan</p>
+
+    <a href="https://wa.me/6287716660025?text=Halo%20kak,%20saya%20siap%20daftar%20kelas%20KOJAC" target="_blank">
+        <button class="btn-utama">Amankan Slot Sekarang</button>
+    </a>
+</div>
+
+
+
+<!-- FOOTER -->
+
+    <footer>
+        <p>&copy; 2024 Kuuhaku Online Japanese Class (KOJAC). All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navList = document.querySelector('.nav-list');
+            const hamburger = document.querySelector('.hamburger');
+            const isClickInside = navList.contains(event.target) || hamburger.contains(event.target);
+            
+            if (!isClickInside && navList.classList.contains('active')) {
+                navList.classList.remove('active');
+            }
+        });
+        
+        // Button pada Navbar aktif sesuai halaman
+        const navLinks = document.querySelectorAll('.nav-list a');
+        const currentUrl = window.location.pathname.split("/").pop();
+
+         navLinks.forEach(link => {
+             if(link.getAttribute("href") === currentUrl){
+                 link.classList.add("active");
+             }
+             });
+
+document.querySelectorAll('.btn-read').forEach(button => {
+    button.addEventListener('click', function() {
+        const parent = this.parentElement;
+        parent.classList.toggle('active');
+
+        if(parent.classList.contains('active')){
+            this.innerText = "Sembunyikan";
+        } else {
+            this.innerText = "Lihat Selengkapnya";
+        }
+    });
+});
+
+document.querySelectorAll(".acc-header").forEach(button => {
+    button.addEventListener("click", () => {
+
+        const item = button.parentElement;
+
+        if(item.classList.contains("always-open")){
+            return;
+        }
+
+        const content = item.querySelector(".acc-content");
+
+        // Close others
+        document.querySelectorAll(".acc-item").forEach(i => {
+            if(i !== item && !i.classList.contains("always-open")){
+                const c = i.querySelector(".acc-content");
+                i.classList.remove("active");
+                c.style.height = "0px";
+            }
+        });
+
+        // Toggle
+        if(item.classList.contains("active")){
+            content.style.height = content.scrollHeight + "px";
+
+            requestAnimationFrame(() => {
+                content.style.height = "0px";
+            });
+
+            item.classList.remove("active");
+
+        } else {
+            item.classList.add("active");
+
+            // STEP 1: ambil tinggi asli
+            const fullHeight = content.scrollHeight;
+
+            // STEP 2: set ke height
+            content.style.height = fullHeight + "px";
+
+            // STEP 3: setelah animasi selesai → jadi auto
+            setTimeout(() => {
+                content.style.height = "auto";
+            }, 350); // sama dengan transition CSS
+        }
+    });
+});
+
+
+
+    </script>
+</body>
+</html>
