@@ -243,6 +243,15 @@ main aside .social-media li a:hover{
     line-height: 1.8;
 }
 
+.profile-header-img {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .profile-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
